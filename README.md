@@ -644,8 +644,6 @@ pg_query_guardian/
 ## Future Improvements
 
 - **AWS Secrets Manager integration** for password management instead of storing in `guardian.config`
-- **Per-user exemptions** — whitelist specific roles from being killed (e.g. analytics_reader)
-- **Per-query exemptions** — pattern-based whitelist for known long-running reports
 - **Alerting** — SNS notification when a kill occurs
 - **Multi-replica support** — dynamic target list from a replicas config table
 - **Prometheus metrics** — expose kill counts and instance pressure as metrics
@@ -655,8 +653,6 @@ pg_query_guardian/
 ## Lessons Learned
 
 **RDS read replicas are more read-only than you think.** `CREATE EXTENSION` writes to system catalogs. System catalogs are WAL-replicated. Therefore `CREATE EXTENSION` fails on RDS replicas with `cannot execute CREATE EXTENSION in a read-only transaction`. This forced the entire architecture to shift — pg_cron had to move to the primary.
-
-**pg_cron on primary + dblink to replica is actually cleaner.** The original design had pg_cron on the replica. The forced redesign removed the need for any replica setup at all, simplified the installation to a single script, and moved the audit log write to a direct local INSERT rather than a dblink call.
 
 **PostgreSQL 17 changed pg_stat_bgwriter.** Columns `buffers_backend` and `buffers_checkpoint` were removed and moved to `pg_stat_io`. Any code relying on these columns must be updated for PG17+.
 
