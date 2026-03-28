@@ -661,7 +661,6 @@ A Grafana dashboard running on EC2 provides real-time visibility into guardian a
 - **AWS Secrets Manager integration** for password management instead of storing in `guardian.config`
 - **Alerting** — SNS notification when a kill occurs
 - **Multi-replica support** — dynamic target list from a replicas config table
-- **Prometheus metrics** — expose kill counts and instance pressure as metrics
 
 ---
 
