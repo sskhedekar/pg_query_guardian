@@ -91,6 +91,14 @@ BEGIN
         REVOKE pg_signal_backend FROM guardian_monitor;
     EXCEPTION WHEN OTHERS THEN NULL; END;
 
+    BEGIN
+        REVOKE SELECT ON guardian.killed_queries FROM guardian_monitor;
+    EXCEPTION WHEN OTHERS THEN NULL; END;
+
+    BEGIN
+        REVOKE USAGE ON SCHEMA guardian FROM guardian_monitor;
+    EXCEPTION WHEN OTHERS THEN NULL; END;
+
     DROP ROLE guardian_monitor;
     RAISE NOTICE '[cleanup] guardian_monitor grants revoked and role dropped.';
 END;

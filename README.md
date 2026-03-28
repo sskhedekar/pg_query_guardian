@@ -640,6 +640,22 @@ pg_query_guardian/
 
 ---
 
+## Grafana Dashboard
+
+A Grafana dashboard running on EC2 provides real-time visibility into guardian activity and replica health. It connects directly to the read replica using the `guardian_monitor` role — no Prometheus required.
+
+**Guardian Kills** — total kills, kills over time, kill reasons, top offending users and applications, and a recent kills audit table.
+
+**Replica Health** — active connections, longest running query, connections by state, and a live active queries list.
+
+![Guardian Kills](assets/Dashboard%201.png)
+
+![Replica Health](assets/Dashboard%202.png)
+
+> See [docs/grafana-setup.md](docs/grafana-setup.md) for full setup instructions (gitignored, not pushed to GitHub).
+
+---
+
 ## Future Improvements
 
 - **AWS Secrets Manager integration** for password management instead of storing in `guardian.config`

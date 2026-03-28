@@ -285,6 +285,8 @@ $$;
 GRANT CONNECT ON DATABASE postgres TO guardian_monitor;
 GRANT pg_monitor        TO guardian_monitor;
 GRANT pg_signal_backend TO guardian_monitor;
+GRANT USAGE  ON SCHEMA guardian TO guardian_monitor;
+GRANT SELECT ON guardian.killed_queries TO guardian_monitor;
 
 -- =============================================================================
 -- 9. MAIN TERMINATION FUNCTION
