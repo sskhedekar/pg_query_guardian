@@ -55,13 +55,13 @@ Single scan, 1 page read, 1 execution plan. Replaces the old 6-query approach ac
 | value | reason |
 |---|---|
 | `pg_dump` | Runs long SELECTs during backup |
-| `pg_repack` | Runs SELECT + WITH CTEs for table reorganisation |
 | `pg_query_guardian` | Guardian's own dblink session on replica |
 | `pganalyze-collector` | Runs analytical queries against pg_stat_statements |
 
-Note: `pg_restore` and `pg_basebackup` were intentionally excluded:
+Note: `pg_restore`, `pg_basebackup`, and `pg_repack` were intentionally excluded:
 - `pg_restore` targets a writable instance — never runs on a read replica
 - `pg_basebackup` uses WAL streaming (walsender process) — guardian never sees it
+- `pg_repack` rewrites tables in-place on the primary — never runs on a read replica
 
 ## Helper functions (13 total)
 

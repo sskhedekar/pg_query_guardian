@@ -234,7 +234,6 @@ The following tools are **pre-exempted automatically** at install time. They con
 | Application name | Tool | Why protected |
 |---|---|---|
 | `pg_dump` | PostgreSQL backup | Issues long SELECT on every table during backup |
-| `pg_repack` | Online table reorganisation | Issues SELECT and WITH CTEs to rebuild tables |
 | `pg_query_guardian` | Guardian own dblink session | Guardian's own connection to the replica |
 | `pganalyze-collector` | pganalyze monitoring | Runs analytical queries against pg_stat_statements |
 
