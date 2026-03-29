@@ -652,7 +652,6 @@ A Grafana dashboard running on EC2 provides real-time visibility into guardian a
 
 ![Replica Health](assets/Dashboard%202.png)
 
-> See [docs/grafana-setup.md](docs/grafana-setup.md) for full setup instructions (gitignored, not pushed to GitHub).
 
 ---
 
